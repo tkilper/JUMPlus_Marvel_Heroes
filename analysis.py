@@ -64,7 +64,9 @@ print(' ')
 # 10) Find out how many super heroes are there with power 100 of good alignment
 print('10) Find out how many super heroes are there with power 100 of good alignment')
 print('--------------------------------------------------')
-print(df[df['Alignment'] == 'good'].value_counts(['Power'] == 100))
+good_heroes = df[df['Alignment'] == 'good']
+ghw100p = good_heroes[good_heroes['Power'] == 100]
+print(len(ghw100p))
 print(' ')
 
 # 11) Shape them what you got in point 10
@@ -75,54 +77,57 @@ print(' ')
 # 12) Show all records from point 10
 print('12) Show all records from point 10')
 print('--------------------------------------------------')
+print(ghw100p)
 print(' ')
 
-# 2) Read csv
-print('2) Read csv')
+# 13) Retrieve total of first five records of max power of good alignment super heroes
+print('13) Retrieve total of first five records of max power of good alignment super heroes')
+print('--------------------------------------------------')
+print(ghw100p.head(5))
+print(' ')
+
+# 14) Draw a bar plot of all super heroes who are having good alignment and max power of top five only , take same object of point 13 , show name and total in plot with green bars
+print('14) Draw a bar plot of all super heroes who are having good alignment and max power of top five only , take same object of point 13 , show name and total in plot with green bars')
+print('--------------------------------------------------')
+
+print(' ')
+
+# 15) Extract villains having bad alignment
+print('15) Extract villains having bad alignment')
+print('--------------------------------------------------')
+vils = df[df['Alignment'] == 'bad']
+print(vils)
+print(' ')
+
+# 16) Show first five records of point 15
+print('16) Show first five records of point 15')
+print('--------------------------------------------------')
+print(df[df['Alignment'] == 'bad'].head(5))
+print(' ')
+
+# 17) Show top five fastest super villains in terms of super speed
+print('17) Show top five fastest super villains in terms of super speed')
+print('--------------------------------------------------')
+print(vils.sort_values(['Speed'], ascending=False).head(5))
+print(' ')
+
+# 18) Top five super villains in terms of intelligence
+print('18) Top five super villains in terms of intelligence')
+print('--------------------------------------------------')
+print(vils.sort_values(['Intelligence'], ascending=False).head(5))
+print(' ')
+
+# 19) Show who is most dangerous super villain after calculating their total (top 5 only)
+print('19) Show who is most dangerous super villain after calculating their total (top 5 only)')
 print('--------------------------------------------------')
 print(' ')
 
-# 2) Read csv
-print('2) Read csv')
+# 20) Draw a histogram for speed of super heroes having fig size 10,5 , provide speed in histogram for only good alignment super heroes ,title should be "distribution of speed" , xlabel should be "speed"
+print('20) Draw a histogram for speed of super heroes having fig size 10,5 , provide speed in histogram for only good alignment super heroes ,title should be "distribution of speed" , xlabel should be "speed"')
 print('--------------------------------------------------')
 print(' ')
 
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# 2) Read csv
-print('2) Read csv')
-print('--------------------------------------------------')
-print(' ')
-
-# Bonus
-print('BONUS')
+# 21) Draw a histogram for combat of super villains having fig size 10,5 , provide combat in histogram for only bad alignment super heroes ,title should be "distribution of combat" , xlabel should be "combat"
+print('21) Draw a histogram for combat of super villains having fig size 10,5 , provide combat in histogram for only bad alignment super heroes ,title should be "distribution of combat" , xlabel should be "combat"')
 print('--------------------------------------------------')
 print(' ')
