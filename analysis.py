@@ -4,6 +4,7 @@
 # 1) Import libraries
 print('1) Import required libraries')
 print('--------------------------------------------------')
+from inspect import stack
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -72,6 +73,7 @@ print(' ')
 # 11) Shape them what you got in point 10
 print('11) Shape them what you got in point 10')
 print('--------------------------------------------------')
+print(ghw100p.shape)
 print(' ')
 
 # 12) Show all records from point 10
@@ -83,13 +85,16 @@ print(' ')
 # 13) Retrieve total of first five records of max power of good alignment super heroes
 print('13) Retrieve total of first five records of max power of good alignment super heroes')
 print('--------------------------------------------------')
-print(ghw100p.head(5))
+print(good_heroes.sort_values(['Power'], ascending=False)[['Name','Total']].head(5))
 print(' ')
 
 # 14) Draw a bar plot of all super heroes who are having good alignment and max power of top five only , take same object of point 13 , show name and total in plot with green bars
 print('14) Draw a bar plot of all super heroes who are having good alignment and max power of top five only , take same object of point 13 , show name and total in plot with green bars')
 print('--------------------------------------------------')
-
+bardata = good_heroes.sort_values(['Power'], ascending=False).head(5)
+sns.barplot(x='Name', y='Total', data=bardata, color="green").set(title='Totals of Top 5 Most Powerful Superheroes')
+plt.show()
+print('top_5_pow_tots.png')
 print(' ')
 
 # 15) Extract villains having bad alignment
@@ -120,14 +125,37 @@ print(' ')
 # 19) Show who is most dangerous super villain after calculating their total (top 5 only)
 print('19) Show who is most dangerous super villain after calculating their total (top 5 only)')
 print('--------------------------------------------------')
+print(vils.sort_values(['Total'], ascending=False)[['Name','Total']].head(1))
 print(' ')
 
 # 20) Draw a histogram for speed of super heroes having fig size 10,5 , provide speed in histogram for only good alignment super heroes ,title should be "distribution of speed" , xlabel should be "speed"
 print('20) Draw a histogram for speed of super heroes having fig size 10,5 , provide speed in histogram for only good alignment super heroes ,title should be "distribution of speed" , xlabel should be "speed"')
 print('--------------------------------------------------')
+sns.histplot(data=good_heroes, x='Speed').set(title = 'Distribution of Speed')
+plt.show()
+print('dis_spd_good.png')
 print(' ')
 
 # 21) Draw a histogram for combat of super villains having fig size 10,5 , provide combat in histogram for only bad alignment super heroes ,title should be "distribution of combat" , xlabel should be "combat"
 print('21) Draw a histogram for combat of super villains having fig size 10,5 , provide combat in histogram for only bad alignment super heroes ,title should be "distribution of combat" , xlabel should be "combat"')
 print('--------------------------------------------------')
+sns.histplot(data=vils, x='Combat', color='red').set(title = 'Distribution of Combat')
+plt.show()
+print('dis_comb_bad.png')
+print(' ')
+
+# Bonus
+print('*** BONUS ***')
+print(' ')
+print('Distribution of Speed Histogram (Including Heroes and Villians)')
+print('--------------------------------------------------')
+sns.histplot(data=df, x='Speed', hue='Alignment', multiple='stack').set(title='Distribution of Speed')
+plt.show()
+print('dis_spd_all.png')
+print(' ')
+print('Distribution of Combat Histogram (Including Heroes and Villians)')
+print('--------------------------------------------------')
+sns.histplot(data=df,x='Combat',hue='Alignment', multiple='stack').set(title='Distribution of Combat')
+plt.show()
+print('dis_comb_all.png')
 print(' ')
